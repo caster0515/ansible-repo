@@ -23,7 +23,7 @@
 - name: Install Docker-compose
   hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com
   become: yes
-  become_user: ec2-user
+  become_user: root
   tasks:
     - name: Create docker-compose directory
       file:
@@ -41,7 +41,7 @@
 - name: Start docker containers
   hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com
   become: yes
-  become_user: ec2-user
+  become_user: root
   vars_files:
     - project-vars
   roles:
