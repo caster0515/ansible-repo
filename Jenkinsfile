@@ -11,6 +11,7 @@ pipeline {
           sshagent(['ansible-server']) {
             sh "scp -o StrictHostKeyChecking=no *.yaml ubuntu@${ANSIBLE_SERVER}:/home/ubuntu"
             sh "scp -r roles/* ubuntu@${ANSIBLE_SERVER}:/home/ubuntu/roles"
+            sh "scp project-var ubuntu@${ANSIBLE_SERVER}:/home/ubuntu"
           }
         }
       }

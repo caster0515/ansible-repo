@@ -5,7 +5,7 @@
 - name: docker login
   docker_login:
     username: caster0515
-    password: Annya_02272014
+    password: "{{docker_password}}"
 - name: Start containers from compose
   community.docker.docker_compose_v2: 
     project_src: /home/ec2-user

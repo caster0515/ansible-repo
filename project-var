@@ -1,0 +1,6 @@
+location: /home/caster
+version: 1.0.0
+linuxuser: root
+docker_password: test
+ansible_become: false
+ansible_python_interpreter: /usr/local/bin/python3.6
