@@ -1,5 +1,5 @@
 - name: Install Docker
-  hosts: all
+  hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com, ec2-3-71-42-125.eu-central-1.compute.amazonaws.com
   become: yes
   tasks:
     - name: Install Docker
@@ -13,7 +13,7 @@
         state: started
 
 - name: Install Docker-compose
-  hosts: all
+  hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com, ec2-3-71-42-125.eu-central-1.compute.amazonaws.com
   tasks:
     - name: Create docker-compose directory
       file:
