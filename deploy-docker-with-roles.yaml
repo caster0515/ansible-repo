@@ -1,0 +1,48 @@
+---
+- name: Install Docker
+  hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com
+  become: yes
+  tasks:
+    - name: Install Docker
+      yum:
+        name: docker
+        update_cache: yes
+        state: present
+    - name: Start docker daemon
+      systemd:
+        name: docker
+        state: started
+
+- name: Create new linux user
+  hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com
+  become: yes
+  roles:
+    - create_user 
+
+    
+- name: Install Docker-compose
+  hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com
+  become: yes
+  become_user: ubuntu
+  tasks:
+    - name: Create docker-compose directory
+      file:
+        path: ~/.docker/cli-plugins
+        state: directory
+    - name: Get architecture of remote machine
+      shell: uname -m
+      register: remote_arch
+    - name: Install docker-compose
+      get_url:
+        url: "https://github.com/docker/compose/releases/latest/download/docker-compose-linux-{{ remote_arch.stdout }}"
+        dest: ~/.docker/cli-plugins/docker-compose
+        mode: +x
+
+- name: Start docker containers
+  hosts: ec2-3-65-60-49.eu-central-1.compute.amazonaws.com
+  become: yes
+  become_user: ubuntu
+  vars_files:
+    - project-vars
+  roles:
+    - start_container
