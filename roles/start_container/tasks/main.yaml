@@ -3,6 +3,8 @@
     src: /home/ubuntu/docker-compose-full.yaml
     dest: /home/ec2-user/docker-compose.yaml
 - name: docker login
+  vars_files:
+   - project-vars
   docker_login:
     username: caster0515
     password: "{{docker_password}}"
