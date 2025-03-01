@@ -11,8 +11,6 @@ pipeline {
           sshagent(['ansible-server']) {
             sh "scp -o StrictHostKeyChecking=no ansible/* ubuntu@${ANSIBLE_SERVER}:/home/ubuntu"
 
-
-            }
           }
         }
       }
