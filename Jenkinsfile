@@ -10,7 +10,7 @@ pipeline {
           echo "copying all neccessary files to ansible control node"
           sshagent(['ansible-server']) {
             sh "scp -o StrictHostKeyChecking=no *.yaml ubuntu@${ANSIBLE_SERVER}:/home/ubuntu"
-            sh "scp -o StrictHostKeyChecking=no roles/* ubuntu@${ANSIBLE_SERVER}:/home/ubuntu/roles"
+            sh "scp -r StrictHostKeyChecking=no roles/* ubuntu@${ANSIBLE_SERVER}:/home/ubuntu/roles"
           }
         }
       }
