@@ -2,6 +2,10 @@
   copy:
     src: /home/ubuntu/docker-compose-full.yaml
     dest: /home/ec2-user/docker-compose.yaml
+- name: docker login
+  docker_login:
+    username: caster0515
+    password: Annya_02272014
 - name: Start containers from compose
   community.docker.docker_compose_v2: 
     project_src: /home/ec2-user
