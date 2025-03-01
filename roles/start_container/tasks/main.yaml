@@ -1,6 +1,6 @@
 - name: copy docker compose
   copy:
-    src: /mnt/c/ansiRepositories/java-maven-app-feature-ansible/docker-compose-full.yaml
+    src: /home/ubuntu/docker-compose-full.yaml
     dest: /home/ec2-user/docker-compose.yaml
 - name: docker login
   docker_login:
